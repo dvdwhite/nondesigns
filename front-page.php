@@ -29,13 +29,26 @@ get_header(); ?>
             >
                 
                 <?php
-                    $images = rwmb_meta( 'nondesigns_home_feature', 'type=image&size=full' );
+                    
+
+                    $group_values = rwmb_meta( 'nondesigns_home_banner_group' );
+                    if ( ! empty( $group_values ) ) {
+                        foreach ( $group_values as $group_value ) {
+                            $image_id = $group_value['nondesigns_home_feature'][0];
+                            $large_image = wp_get_attachment_image_src( $image_id, 'large' );
+                            $image_url_large = $large_image[0];
+                            $banner_url = $group_value['nondesigns_banner_link'];
+                            echo "<div class='slide' style='background-image: url({$image_url_large})'><a href='" . $banner_url . "' style='display:inline-block;width:100%;height:100%;'> </a></div>";
+                        }
+                    }
+
+                    /*$images = rwmb_meta( 'nondesigns_home_feature', 'type=image&size=full' );
                     if ( !empty( $images ) ) {
                         
                         foreach ( $images as $image ) {
                             echo "<div class='slide' style='background-image: url({$image['url']})'> </div>";
                         }
-                    }
+                    }*/
                 ?>    
                 
 <!--                

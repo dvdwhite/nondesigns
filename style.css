@@ -937,7 +937,7 @@ h2 {
     height:100%; 
     text-align:center; 
     position:absolute;
-    z-index:9999999;
+    z-index:9999;
     background:url(images/loading.png) no-repeat center !important;
     background-size:50% !important;
 }
@@ -1688,6 +1688,10 @@ h2 {
         text-indent: 240px!important;
     } 
     
+}
+
+.blocker {
+	z-index:99999!important;
 }
 
 

@@ -111,6 +111,8 @@ function nondesigns_scripts() {
 
 	wp_enqueue_style( 'MyFontsWebfontsKit', get_template_directory_uri() . '/css/MyFontsWebfontsKit.css' );
 
+	wp_enqueue_style( 'jquery-modal-css', get_template_directory_uri() . '/css/jquery.modal.css' );
+
 	// deregister default jQuery included with Wordpress
     wp_deregister_script( 'jquery' );
     wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-2.1.1.min.js', array(), '20150705', false );
@@ -122,6 +124,8 @@ function nondesigns_scripts() {
 	wp_enqueue_script( 'jquery-cycle2-scrollVert', get_template_directory_uri() . '/js/jquery.cycle2.scrollVert.js', array(), '20150705', false );
 
 	wp_enqueue_script( 'jquery-cycle2-video', get_template_directory_uri() . '/js/jquery.cycle2.video.min.js', array(), '20170518', false );	
+
+	wp_enqueue_script( 'jquery-modal', get_template_directory_uri() . '/js/jquery.modal.min.js', array(), '20170526', false );	
 
 	wp_enqueue_script( 'nondesigns-javascript', get_template_directory_uri() . '/js/global.js', array(), '20150705', false );
 

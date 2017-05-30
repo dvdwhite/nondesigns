@@ -15,18 +15,21 @@
         include 'slide-about.php';
     }
 
+
     $nondesigns_products = rwmb_meta('nondesigns_products');
 
     $reverse_products = array_reverse($nondesigns_products);
-
+    
     foreach ( $reverse_products as $nondesign_product ) {
         
+        $youtubelink = rwmb_meta( 'nondesigns_youtube_link', '', $nondesign_product );
         $slug = get_post_field( 'post_name', $nondesign_product );
         $images = rwmb_meta( 'nondesigns_slide_background', 'type=image&size=full', $nondesign_product );
         $reset = array_values($images);
         //var_dump ($reset);
         $total_slides = count($images);
         $add_slides = $total_slides - 2;
+
         
         
         echo '<div id="' . $slug . '" data-cycle-hash="' . $slug . '" class="' . $slug . '">';
@@ -38,12 +41,18 @@
             echo 'data-cycle-pager-template="<a href=\'#\' style=\'inline-block; width:30px; height:30px;\'>&nbsp;&nbsp;</a>">';
         
                 echo '<div class="one slide" style="background-image:url(' . $reset[0]['url'] . ')">';
+                
+                if ( !empty($youtubelink) ) {
+                    echo '<a href="#youtubeembed" rel="modal:open" style="display:inline-block;width:100%; height:100%;"> </a></p>';
+                    echo '<div id="youtubeembed" style="display:none;">';
+                    //echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/-7DF2HjIXZc?list=UUEZ8-WtUmesCkAt12LlMHiA" frameborder="0" allowfullscreen></iframe>';
+                    echo '<iframe width="560" height="315" src="' . $youtubelink . '" frameborder="0" allowfullscreen></iframe>';
+                    echo '<br clear="all" /></div>';
+                }
+                
                 echo '<div class="product-init-nav next">';
                 echo '<div class="product-name">' . get_the_title($nondesign_product) . '</div>';
                 echo '<div class="init-next-slide">MORE</div>';
-                if ( $slug == 'nickelodeon' ) {
-                    echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/dlA5Wo0-58o" frameborder="0" autoplay=1 allowfullscreen controls=0></iframe>';
-                }
                 echo '</div></div>';
 
                 echo '<div class="two slide" style="background-image:url(' . $reset[1]['url'] . ')"><div class="product-detail-nav prev">';

@@ -48,14 +48,36 @@ function nondesigns_register_meta_boxes( $meta_boxes ) {
 		'autosave'   => true,
 		// List of meta fields
 		'fields'     => array(
-			// HOME PAGE FEATURE IMAGE SLIDER
-			array(
-				'name'             => esc_html__( 'Home Page Feature Slider', $prefix ),
-                'desc'             => 'Recommended home page banner image dimensions are 2560 x 1600 pixels.',
-				'id'               => "{$prefix}home_feature",
-				'type'             => 'image_advanced',
-				'max_file_uploads' => 4,
-			),
+			// Grouped Fields
+	        array(
+	            'name' => 'Home Page Banner Group',
+	            'id' => 'nondesigns_home_banner_group',
+	            'type' => 'group',
+	            'clone' => true, 
+	            'sort_clone' => true,
+	            // List of sub-fields
+	            'fields' => array(
+	                
+					// HOME PAGE FEATURE IMAGE SLIDER
+					array(
+						'name'             => esc_html__( 'Home Page Feature Slider', $prefix ),
+		                'desc'             => 'Recommended home page banner image dimensions are 2560 x 1600 pixels.',
+						'id'               => "{$prefix}home_feature",
+						'type'             => 'image_advanced',
+						'max_file_uploads' => 1,
+					),
+
+					// BANNER LINK
+					array(
+						'name' => __( 'Banner Link', $prefix ),
+						'id'   => "{$prefix}banner_link",
+						'type' => 'textarea',
+						'cols' => 10,
+						'rows' => 1,
+					),
+					
+	            ),
+	        ),			
 		)
 	);
 	// 2nd meta box
@@ -71,7 +93,16 @@ function nondesigns_register_meta_boxes( $meta_boxes ) {
 				'id'               => "{$prefix}slide_background",
 				'type'             => 'image_advanced',
 				'max_file_uploads' => 6,
-			),            
+			),  
+
+			// BANNER LINK
+			array(
+				'name' => __( 'YouTube Link', $prefix ),
+				'id'   => "{$prefix}youtube_link",
+				'type' => 'textarea',
+				'cols' => 10,
+				'rows' => 1,
+			),        
 		),
 	);
 	// 3rd meta box

@@ -14,19 +14,6 @@
 
 get_header(); ?>
 
-<style type="text/css">
-iframe {
-position: fixed;
-right: 0;
-bottom: 0;
-min-width: 100%;
-min-height: 100%;
-width: auto;
-height: auto;
-z-index: -100;
-}
-</style>
-
 	<!--<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">-->
 
