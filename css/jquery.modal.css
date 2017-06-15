@@ -72,7 +72,7 @@
 }
 
 
-#youtubeembed {
+.youtubeembed {
   position: relative;
   padding-bottom: 42%; /* 16:9 */
   padding-top: 25px;

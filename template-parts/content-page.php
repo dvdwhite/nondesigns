@@ -43,8 +43,8 @@
                 echo '<div class="one slide" style="background-image:url(' . $reset[0]['url'] . ')">';
                 
                 if ( !empty($youtubelink) ) {
-                    echo '<a href="#youtubeembed" rel="modal:open" style="display:inline-block;width:100%; height:100%;"> </a></p>';
-                    echo '<div id="youtubeembed" style="display:none;">';
+                    echo '<a href="#youtubeembed-' . $slug . '" rel="modal:open" style="display:inline-block;width:100%; height:100%;"> </a></p>';
+                    echo '<div id="youtubeembed-' . $slug . '" class="youtubeembed" style="display:none;">';
                     //echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/-7DF2HjIXZc?list=UUEZ8-WtUmesCkAt12LlMHiA" frameborder="0" allowfullscreen></iframe>';
                     echo '<iframe width="560" height="315" src="' . $youtubelink . '" frameborder="0" allowfullscreen></iframe>';
                     echo '<br clear="all" /></div>';
@@ -84,7 +84,7 @@
                         echo '<div class="next-app"><a href="/product-5">NEXT PROJECT</a></div>';
                     }
                 } 
-        
+                //echo $wp_query->current_post;
                 if (($wp_query->current_post) > 1 ) {
                     if ( is_page('product-2') ) {
                         echo '<div class="previous-app"><a href="/product-1/#need_last_slide_of_previous_loop">PREVIOUS PROJECT</a></div>';

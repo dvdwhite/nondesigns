@@ -22,7 +22,7 @@ get_header(); ?>
             <div class="cycle-slideshow home" 
                  data-cycle-swipe=true
                  data-cycle-fx="scrollHorz"
-                 data-cycle-timeout="9000"
+                 data-cycle-timeout="3000"
                  data-cycle-pager=".pager"
                  data-cycle-pager-template="<a href='#' style='inline-block; width:30px; height:30px;'>&nbsp;&nbsp;</a>"
                  data-cycle-slides="> div.slide"
@@ -35,7 +35,7 @@ get_header(); ?>
                     if ( ! empty( $group_values ) ) {
                         foreach ( $group_values as $group_value ) {
                             $image_id = $group_value['nondesigns_home_feature'][0];
-                            $large_image = wp_get_attachment_image_src( $image_id, 'large' );
+                            $large_image = wp_get_attachment_image_src( $image_id, 'full' );
                             $image_url_large = $large_image[0];
                             $banner_url = $group_value['nondesigns_banner_link'];
                             echo "<div class='slide' style='background-image: url({$image_url_large})'><a href='" . $banner_url . "' style='display:inline-block;width:100%;height:100%;'> </a></div>";
