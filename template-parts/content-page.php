@@ -20,6 +20,26 @@
 
     $reverse_products = array_reverse($nondesigns_products);
     
+    function getPreviousPostSlug($pageName) {
+        $previousPageMeta = get_page_by_path( $pageName );
+        $previousPageId = $previousPageMeta->ID;
+        echo $previousPageId;
+        $previousPage = rwmb_meta('nondesigns_products', array(), $previousPageId );
+        //var_dump($previousPage);
+        if ($pageName == 'product-1') {
+            $itemCount = count($previousPage)-1;
+        } else {
+            $itemCount = count($previousPage)-2;
+        }
+        //$itemCount = count($previousPage)-2;
+        $previousPostId = $previousPage[$itemCount];
+        var_dump($previousPostId);
+        $previousPost = get_post($previousPostId); 
+        $previousPostSlug = $previousPost->post_name;
+        echo '<div class="previous-app"><a href="/' . $pageName . '/#' . $previousPostSlug . '">PREVIOUS PROJECT</a></div>';
+
+    }
+
     foreach ( $reverse_products as $nondesign_product ) {
         
         $youtubelink = rwmb_meta( 'nondesigns_youtube_link', '', $nondesign_product );
@@ -30,8 +50,6 @@
         $total_slides = count($images);
         $add_slides = $total_slides - 2;
 
-        
-        
         echo '<div id="' . $slug . '" data-cycle-hash="' . $slug . '" class="' . $slug . '">';
         
             echo '<div class="cycle-slideshow products inner-slideshow" data-cycle-fx="scrollHorz" data-cycle-swipe=true data-cycle-slides="> div.slide"';
@@ -85,20 +103,23 @@
                     }
                 } 
                 //echo $wp_query->current_post;
-                if (($wp_query->current_post) > 1 ) {
+                //if (($wp_query->current_post) > 1 ) {
                     if ( is_page('product-2') ) {
-                        echo '<div class="previous-app"><a href="/product-1/#need_last_slide_of_previous_loop">PREVIOUS PROJECT</a></div>';
+                        getPreviousPostSlug('product-1');
                     }
                     if ( is_page('product-3') ) {
-                        echo '<div class="previous-app"><a href="/product-2/#need_last_slide_of_previous_loop">PREVIOUS PROJECT</a></div>';
+                        getPreviousPostSlug('product-2');
+                        //echo '<div class="previous-app"><a href="/product-2/">PREVIOUS PROJECT</a></div>';
                     }
                     if ( is_page('product-4') ) {
-                        echo '<div class="previous-app"><a href="/product-3/#need_last_slide_of_previous_loop">PREVIOUS PROJECT</a></div>';
+                        getPreviousPostSlug('product-3');
+                        //echo '<div class="previous-app"><a href="/product-3/">PREVIOUS PROJECT</a></div>';
                     }
                     if ( is_page('product-5') ) {
-                        echo '<div class="previous-app"><a href="/product-4/#need_last_slide_of_previous_loop">PREVIOUS PROJECT</a></div>';
+                        getPreviousPostSlug('product-4');
+                        //echo '<div class="previous-app"><a href="/product-4/">PREVIOUS PROJECT</a></div>';
                     }
-                }
+                //}
         
                 if ( $total_slides > 2 ) { echo '<div class="three slide" style="background-image:url(' . $reset[2]['url'] . ')"></div>'; }
                 if ( $total_slides > 3 ) { echo '<div class="four slide" style="background-image:url(' . $reset[3]['url'] . ')"></div>'; }

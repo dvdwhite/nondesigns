@@ -1137,8 +1137,9 @@ h2 {
     background: #262025;
     width: 50px !important;
     height: 100% !important;
-    position: relative;
-    float: right;
+    position: absolute;
+    top: 0; 
+    right: 0;
     cursor: pointer;
 }
 
@@ -1393,6 +1394,10 @@ h2 {
 
 .next-app a:hover {
     text-indent: -9999px !important;
+    text-shadow: 1px 1px 3px #000;
+    background: url(images/project-next-active.png) top center no-repeat;
+    background-size: 35px 14px;
+    
 }
 
 .previous-app {
@@ -1418,6 +1423,10 @@ h2 {
 
 .previous-app a:hover {
     text-indent: -9999px !important;
+    text-shadow: 1px 1px 3px #000;
+    background: url(images/project-previous-active.png) bottom center no-repeat;
+    background-size: 35px 14px;
+    
 }
 
 .next-project .arrow-down {
@@ -1427,7 +1436,7 @@ h2 {
     line-height:2em;
     text-indent: -99999px;
     color: #ffd4f8;
-    font-size:.9em;
+    /*font-size:.9em;*/
     background-size: 35px 14px;
 }
 
@@ -1456,7 +1465,7 @@ h2 {
     color: #ffd4f8;
     line-height:5em;
     text-indent: -99999px;
-    font-size: .9em;
+    /*font-size: .9em;*/
     background-size: 35px 14px;
 /*    margin: 0 auto;*/
 }
@@ -1584,11 +1593,11 @@ h2 {
     }  
     
     .next-project {
-        height: 50px
+        height: 51px
     }
     
     .previous-project {
-        height: 50px;
+        height: 51px;
         top: 0;
     }
     
@@ -1642,7 +1651,15 @@ h2 {
     .previous-app {
         background-size: 70px 27px !important; 
         top: 24px !important;
-    }  
+    } 
+
+    .next-app a:hover{
+    	background-size: 70px 27px;
+    }
+
+    .previous-app a:hover{
+    	background-size: 70px 27px;
+    }
     
     .footer {
         text-indent:0;
